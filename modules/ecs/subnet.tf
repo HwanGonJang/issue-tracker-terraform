@@ -21,7 +21,7 @@ resource "aws_route_table" "private-a" {
 
   route {
     cidr_block     = "0.0.0.0/0"
-    nat_gateway_id = var.nat-a-id
+    nat_gateway_id = var.nat-c-id   # 상용에서 a로 변경하기
   }
 }
 

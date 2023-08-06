@@ -20,6 +20,7 @@ resource "aws_ecs_service" "api" {
 
   network_configuration {
     subnets         = [aws_subnet.private-a.id, aws_subnet.private-c.id]
+    security_groups = [aws_security_group.ecs_security_group.id]
   }
 
   load_balancer {

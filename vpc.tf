@@ -12,11 +12,12 @@ resource "aws_internet_gateway" "main" {
   }
 }
 
-resource "aws_eip" "nat-a" {
-  tags = {
-    Name = "${local.project_name}-eip-nat-gateway-a"
-  }
-}
+# 실제 사용 시 추가하기
+#resource "aws_eip" "nat-a" {
+#  tags = {
+#    Name = "${local.project_name}-eip-nat-gateway-a"
+#  }
+#}
 
 resource "aws_eip" "nat-c" {
   tags = {
@@ -42,14 +43,15 @@ resource "aws_subnet" "public-c" {
   }
 }
 
-resource "aws_nat_gateway" "public-a" {
-  allocation_id     = aws_eip.nat-a.id
-  connectivity_type = "public"
-  subnet_id         = aws_subnet.public-a.id
-  tags = {
-    Name = local.nat_gateway_a_name
-  }
-}
+# 실제 사용 시 추가하기
+#resource "aws_nat_gateway" "public-a" {
+#  allocation_id     = aws_eip.nat-a.id
+#  connectivity_type = "public"
+#  subnet_id         = aws_subnet.public-a.id
+#  tags = {
+#    Name = local.nat_gateway_a_name
+#  }
+#}
 
 resource "aws_nat_gateway" "public-c" {
   allocation_id     = aws_eip.nat-c.id
