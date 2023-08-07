@@ -54,12 +54,37 @@ variable "backend_domain" {
   description = "Backend domain url"
 }
 
-variable "route53_root_zone_id" {
+variable "ecs_task_role_arn" {
   type        = string
-  description = "Route53 root zone id"
+  description = "ECS task role arn"
+}
+
+variable "ecs_task_execution_role_arn" {
+  type        = string
+  description = "ECS execution role arn"
+}
+
+variable "ecs_cluster_name" {
+  type        = string
+  description = "ECS cluster name"
+}
+
+variable "ecr_repository_url" {
+  type        = string
+  description = "ECR repository url"
+}
+
+variable "route53_root_zone_id" {
+    type        = string
+    description = "Route53 root zone id"
 }
 
 variable "route53_root_domain_name" {
-  type        = string
-  description = "Route53 root domain name"
+    type        = string
+    description = "Route53 root domain name"
+}
+
+variable "acm_certificate_arn" {
+    type        = string
+    description = "ACM certificate arn"
 }

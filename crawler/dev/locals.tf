@@ -1,10 +1,16 @@
 locals {
-  project_name        = "issue-tracker" # FIXME
+  # Environment
+  environment = "dev"
+
+  # Project Variables
+  project_name        = "issue-tracker"
   service = "crawler"
+  ecs_name = "${local.project_name}-${local.service}-${local.environment}"
 
   # Domain name
   root_domain             = "yourssu-inviter.link"
-  backend_domain          = "crawler.${local.root_domain}" # FIXME
+  server_domain           = "crawler.${local.root_domain}"
+  backend_domain          = "${local.environment}.crawler.${local.root_domain}"
   backend_port            = 8000
 
   # Main VPC
@@ -14,12 +20,6 @@ locals {
   nat_gateway_a_name    = "${local.project_name}-nat-gateway-a"
   nat_gateway_c_name    = "${local.project_name}-nat-gateway-c"
 
-  # CIDR blocks # FIXME
-  # Refer to README at https://github.com/AlmSmartDoctor/smart-doctor-common-terraform
-  # Use block in 10.0.144.0/20, 10.0.160.0/20
-  vpc_cidr_block       = "10.0.0.0/16"
-  public_a_cidr_block                    = "10.0.0.0/24"
-  public_c_cidr_block                    = "10.0.1.0/24"
 
   crawler_dev_cidr_block = ["10.0.4.0/24", "10.0.5.0/24", ]
 

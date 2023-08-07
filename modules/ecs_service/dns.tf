@@ -22,6 +22,6 @@ resource "aws_route53_health_check" "backend_root" {
   request_interval  = "30"
 
   tags = {
-    Name = local.name_prefix
+    Name = var.ecs_name
   }
 }

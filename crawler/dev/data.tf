@@ -1,3 +1,4 @@
+### VPC
 data "aws_vpc" "main" {
   tags = { Name = local.vpc_name }
 }
@@ -26,6 +27,31 @@ data "aws_subnet" "public_c" {
   tags = { Name = "${local.project_name}-subnet-public-c" }
 }
 
+### Route53
 data "aws_route53_zone" "root" {
-  name = local.root_domain
+  name = local.server_domain
+}
+
+data "aws_acm_certificate" "certificate" {
+  domain   = "*.${local.server_domain}"
+  statuses = ["ISSUED"]
+}
+
+### Iam Role
+data "aws_iam_role" "ecs_task_execution_role" {
+  name = "ecs_task_execution_role"
+}
+
+data "aws_iam_role" "ecs_task_role" {
+  name = "ecs_task_role"
+}
+
+## ECS
+#data "aws_ecs_cluster" "ecs_cluster" {
+#  cluster_name = "${local.project_name}-${local.environment}"
+#}
+
+## ECR
+data "aws_ecr_repository" "ecr_repository" {
+  name = "${local.project_name}-${local.service}"
 }

@@ -1,13 +1,7 @@
-resource "aws_ecs_cluster" "ecs_cluster" {
-  name = local.name_prefix
-
-  tags = { Name: "${local.name_prefix}-cluster" }
-}
-
 ### ECS Service
 resource "aws_ecs_service" "api" {
-  name            = local.name_prefix
-  cluster         = aws_ecs_cluster.ecs_cluster.name
+  name            = var.ecs_name
+  cluster         = var.ecs_cluster_name
   task_definition = aws_ecs_task_definition.service.arn
   enable_execute_command = true
   launch_type     = "FARGATE"
@@ -44,7 +38,7 @@ resource "aws_ecs_service" "api" {
     enabled = false
   }
 
-  tags = { Name: local.name_prefix }
+  tags = { Name: var.ecs_name }
 }
 
 ### ECS Task Definition
@@ -52,8 +46,8 @@ resource "aws_ecs_task_definition" "service" {
   family = var.ecs_name
   requires_compatibilities = ["FARGATE"]
   network_mode = "awsvpc"
-  task_role_arn = data.aws_iam_role.ecs_task_role.arn
-  execution_role_arn = data.aws_iam_role.ecs_task_execution_role.arn
+  task_role_arn = var.ecs_task_role_arn
+  execution_role_arn = var.ecs_task_execution_role_arn
 
   cpu       = 1024
   memory    = 4096
@@ -61,7 +55,7 @@ resource "aws_ecs_task_definition" "service" {
   container_definitions = jsonencode([
     {
       name      = var.ecs_name
-      image     = "${data.aws_ecr_repository.ecr_repository.repository_url}:latest"
+      image     = "${var.ecr_repository_url}:latest"
       cpu       = 1024
       memory    = 4096
       essential = true

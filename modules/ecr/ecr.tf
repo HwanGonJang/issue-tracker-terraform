@@ -1,12 +1,12 @@
 ### ECR
 resource "aws_ecr_repository" "ecr_crawler" {
-  name         = "${local.project_name}-crawler"
+  name         = var.project_name
   force_delete = true
   image_scanning_configuration {
     scan_on_push = true
   }
 
-  tags = { Name = "${local.project_name}-crawler" }
+  tags = { Name = var.project_name }
 }
 
 resource "aws_ecr_repository_policy" "ecs_crawler_policy" {

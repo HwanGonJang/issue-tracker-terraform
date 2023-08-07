@@ -4,7 +4,7 @@ resource "aws_subnet" "private-a" {
   vpc_id            = var.vpc_id
   availability_zone = "${var.region}a"
 
-  tags = { Name = "${local.name_prefix}-private-a" }
+  tags = { Name = "${var.ecs_name}-private-a" }
 }
 
 resource "aws_subnet" "private-c" {
@@ -12,7 +12,7 @@ resource "aws_subnet" "private-c" {
   vpc_id            = var.vpc_id
   availability_zone = "${var.region}c"
 
-  tags = { Name = "${local.name_prefix}-private-c" }
+  tags = { Name = "${var.ecs_name}-private-c" }
 }
 
 // Routing Tables

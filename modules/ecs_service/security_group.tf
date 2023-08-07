@@ -17,6 +17,6 @@ resource "aws_security_group" "ecs_security_group" {
   }
 
   tags = {
-    Name = "${local.name_prefix}-elb"
+    Name = "${var.ecs_name}-elb"
   }
 }
