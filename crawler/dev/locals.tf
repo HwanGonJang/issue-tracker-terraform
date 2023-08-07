@@ -1,12 +1,11 @@
 locals {
   project_name        = "issue-tracker" # FIXME
+  service = "crawler"
 
   # Domain name
   root_domain             = "yourssu-inviter.link"
-  frontend_domain         = "reservation.${local.root_domain}" # FIXME / SSR
-  frontend_port           = 3000
-  backend_domain          = "api.${local.frontend_domain}" # FIXME
-  backend_port            = 5000
+  backend_domain          = "crawler.${local.root_domain}" # FIXME
+  backend_port            = 8000
 
   # Main VPC
   vpc_name              = "${local.project_name}-vpc"

@@ -48,3 +48,18 @@ variable "nat-c-id" {
   type        = string
   description = "NAT ID for zone c"
 }
+
+variable "backend_domain" {
+  type        = string
+  description = "Backend domain url"
+}
+
+variable "route53_root_zone_id" {
+  type        = string
+  description = "Route53 root zone id"
+}
+
+variable "route53_root_domain_name" {
+  type        = string
+  description = "Route53 root domain name"
+}
