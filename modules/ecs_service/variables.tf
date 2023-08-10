@@ -88,3 +88,13 @@ variable "acm_certificate_arn" {
     type        = string
     description = "ACM certificate arn"
 }
+
+variable "ecs_service_cpu" {
+  type        = number
+  description = "ecs service cpu"
+}
+
+variable "ecs_service_memory" {
+  type        = number
+  description = "ecs service memory"
+}

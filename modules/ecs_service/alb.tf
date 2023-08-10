@@ -3,7 +3,7 @@ resource "aws_lb" "ecs_alb" {
   internal           = false
   load_balancer_type = "application"
   subnets            = var.public-subnet-ids
-  security_groups    = [aws_security_group.ecs_security_group.id]
+  security_groups    = [aws_security_group.alb_security_group.id]
 
   tags = {
     Environment = var.ecs_name

@@ -53,5 +53,5 @@ data "aws_iam_role" "ecs_task_role" {
 
 ## ECR
 data "aws_ecr_repository" "ecr_repository" {
-  name = "${local.project_name}-${local.service}"
+  name = local.ecs_name
 }

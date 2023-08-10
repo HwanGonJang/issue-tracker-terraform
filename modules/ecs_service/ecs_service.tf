@@ -49,15 +49,15 @@ resource "aws_ecs_task_definition" "service" {
   task_role_arn = var.ecs_task_role_arn
   execution_role_arn = var.ecs_task_execution_role_arn
 
-  cpu       = 1024
-  memory    = 4096
+  cpu       = var.ecs_service_cpu
+  memory    = var.ecs_service_memory
 
   container_definitions = jsonencode([
     {
       name      = var.ecs_name
       image     = "${var.ecr_repository_url}:latest"
-      cpu       = 1024
-      memory    = 4096
+      cpu       = var.ecs_service_cpu
+      memory    = var.ecs_service_memory
       essential = true
       portMappings = [
         {

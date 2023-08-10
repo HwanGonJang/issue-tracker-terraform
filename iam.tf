@@ -29,17 +29,17 @@ resource "aws_iam_role_policy_attachment" "ecs_task_execution_role_policy" {
 }
 
 resource "aws_iam_role_policy_attachment" "ecs_task_execution_role_policy_document" {
-  role   = aws_iam_role.ecs_task_execution_role.id
+  role       = aws_iam_role.ecs_task_execution_role.id
   policy_arn = aws_iam_policy.ecs_task_execution_role.arn
 }
 
 resource "aws_iam_role_policy_attachment" "ecs_task_role_admin" {
-  role   = aws_iam_role.ecs_task_role.id
+  role       = aws_iam_role.ecs_task_role.id
   policy_arn = data.aws_iam_policy.admin.arn
 }
 
 resource "aws_iam_role_policy_attachment" "ecs_task_execution_role_admin" {
-  role   = aws_iam_role.ecs_task_execution_role.id
+  role       = aws_iam_role.ecs_task_execution_role.id
   policy_arn = data.aws_iam_policy.admin.arn
 }
 
@@ -66,7 +66,7 @@ resource "aws_iam_role_policy_attachment" "ecs_task_role_policy" {
 }
 
 resource "aws_iam_role_policy_attachment" "ecs_task_role_policy_document" {
-  role   = aws_iam_role.ecs_task_role.id
+  role       = aws_iam_role.ecs_task_role.id
   policy_arn = aws_iam_policy.ecs_task_execution_role.arn
 }
 

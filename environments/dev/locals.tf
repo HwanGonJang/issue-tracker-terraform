@@ -3,15 +3,15 @@ locals {
   environment = "dev"
 
   # Project Variables
-  project_name        = "issue-tracker"
-  service = "crawler"
-  ecs_name = "${local.project_name}-${local.service}-${local.environment}"
+  project_name = "issue-tracker"
+  service      = "crawler"
+  ecs_name     = "${local.project_name}-${local.service}-${local.environment}"
 
   # Domain name
-  root_domain             = "yourssu-inviter.link"
-  server_domain           = "crawler.${local.root_domain}"
-  backend_domain          = "${local.environment}.crawler.${local.root_domain}"
-  backend_port            = 8000
+  root_domain    = "yourssu-inviter.link"
+  server_domain  = "crawler.${local.root_domain}"
+  backend_domain = "${local.environment}.crawler.${local.root_domain}"
+  backend_port   = 8000
 
   # Main VPC
   vpc_name              = "${local.project_name}-vpc"
