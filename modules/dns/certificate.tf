@@ -1,6 +1,6 @@
 ### SSL Certificate
 resource "aws_acm_certificate" "server_api" {
-  domain_name       = "*.${var.route53_service_domain_name}"
+  domain_name       = "*.${aws_route53_zone.server_api.name}"
   validation_method = "DNS"
 }
 
@@ -18,7 +18,7 @@ resource "aws_route53_record" "server_api_each" {
   records         = [each.value.record]
   ttl             = 60
   type            = each.value.type
-  zone_id         = var.route53_service_zone_id
+  zone_id         = aws_route53_zone.server_api.zone_id
 }
 
 resource "aws_acm_certificate_validation" "server_api" {

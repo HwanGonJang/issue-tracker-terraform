@@ -1,6 +1,6 @@
 locals {
   project_name = "issue-tracker" # FIXME
-  services     = ["crawler"]
+  services     = ["crawler", "model"]
 
   # Domain name
   root_domain     = "yourssu-inviter.link"

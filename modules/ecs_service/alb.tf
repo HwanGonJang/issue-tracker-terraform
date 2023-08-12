@@ -12,7 +12,7 @@ resource "aws_lb" "ecs_alb" {
 
 resource "aws_lb_target_group" "ecs_target_group" {
   name     = "${var.ecs_name}-tg"
-  port     = 8000
+  port     = var.backend_port
   protocol = "HTTP"
   vpc_id   = var.vpc_id
   target_type = "ip"

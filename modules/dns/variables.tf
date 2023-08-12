@@ -12,13 +12,3 @@ variable "route53_root_domain_name" {
   type        = string
   description = "Route53 root domain name"
 }
-
-variable "route53_service_zone_id" {
-  type        = string
-  description = "Route53 crawl zone id"
-}
-
-variable "route53_service_domain_name" {
-  type        = string
-  description = "Route53 crawl domain name"
-}

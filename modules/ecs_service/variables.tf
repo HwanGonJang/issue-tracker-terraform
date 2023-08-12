@@ -98,3 +98,8 @@ variable "ecs_service_memory" {
   type        = number
   description = "ecs service memory"
 }
+
+variable "cpu_architecture" {
+    type        = string
+    description = "cpu architecture"
+}

@@ -28,12 +28,21 @@ data "aws_subnet" "public_c" {
 }
 
 ### Route53
-data "aws_route53_zone" "root" {
-  name = local.server_domain
+data "aws_route53_zone" "crawler" {
+  name = local.crawler_server_domain
 }
 
-data "aws_acm_certificate" "certificate" {
-  domain   = "*.${local.server_domain}"
+data "aws_route53_zone" "model" {
+  name = local.model_server_domain
+}
+
+data "aws_acm_certificate" "crawler" {
+  domain   = "*.${local.crawler_server_domain}"
+  statuses = ["ISSUED"]
+}
+
+data "aws_acm_certificate" "model" {
+  domain   = "*.${local.model_server_domain}"
   statuses = ["ISSUED"]
 }
 
@@ -52,6 +61,10 @@ data "aws_iam_role" "ecs_task_role" {
 #}
 
 ## ECR
-data "aws_ecr_repository" "ecr_repository" {
-  name = local.ecs_name
+data "aws_ecr_repository" "ecr_crawler_repository" {
+  name = local.ecs_crawler_name
+}
+
+data "aws_ecr_repository" "ecr_model_repository" {
+  name = local.ecs_model_name
 }
